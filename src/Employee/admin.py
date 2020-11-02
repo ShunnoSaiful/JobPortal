@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Portfulio, Address, SocialLink, Employee
+from .models import Portfulio, Address, SocialLink, Employee, FollowRequest
 
+admin.site.register(FollowRequest) 
 
 # Register your models here.
 
