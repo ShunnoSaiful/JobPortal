@@ -18,11 +18,6 @@ $(window).on("load", function() {
 
     //  ============= POST JOB POPUP FUNCTION =========
 
-    $(".post-jb").on("click", function(){
-        $(".post-popup.job_post").addClass("active");
-        $(".wrapper").addClass("overlay");
-        return false;
-    });
     $(".post-project > a").on("click", function(){
         $(".post-popup.job_post").removeClass("active");
         $(".wrapper").removeClass("overlay");
