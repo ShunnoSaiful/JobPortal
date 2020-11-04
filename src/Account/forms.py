@@ -36,44 +36,54 @@ class EmployeeLoginForm(forms.Form):
 
 
 class EmployeeRegisterForm(forms.ModelForm):
-	password2 = forms.CharField(
-		widget=forms.PasswordInput(
+	emp_username = forms.CharField(max_length=100, widget=forms.TextInput(
 		attrs={
 		'class':'form-control',
-		'placeholder':'Confirm Password'
+		'placeholder':'Username'
+		}))
+	emp_password2 = forms.CharField(max_length=100, widget=forms.PasswordInput(
+		attrs={
+		'class':'form-control',
+		'placeholder':'Repeat Password'
 		}))
 	class Meta:
 		model = Employee
 		fields = [
-			"emp_first_name",
-			"emp_last_name",
-			"emp_username",
 			"emp_email",
-			"emp_password",
-			"password2"
+			"emp_password"
 		]
-
+	
+	# emp_email = forms.EmailField(max_length=100, widget=forms.EmailInput(
+	# 	attrs={
+	# 	'class':'form-control',
+	# 	'placeholder':'Email'
+	# 	}))
+	# emp_password = forms.CharField(max_length=100, widget=forms.PasswordInput(
+	# 	attrs={
+	# 	'class':'form-control',
+	# 	'placeholder':'Password'
+	# 	}))
 
 	def clean_username(self):
-		emp_username = self.cleaned_data.get("emp_username")
-		qs = User.objects.filter(emp_username=emp_username)
+		username = self.cleaned_data.get("emp_username")
+		qs = User.objects.filter(username=username)
 		if qs.exists():
 			raise forms.ValidationError("Username already taken")
-		return emp_username
+		return username
 
 	def clean_email(self):
-		emp_email = self.cleaned_data.get("emp_email")
-		qs = User.objects.filter(emp_email=emp_email)
+		email = self.cleaned_data.get("emp_email")
+		qs = User.objects.filter(email=email)
 		if qs.exists():
 			raise forms.ValidationError("E-mail already taken")
-		return emp_email
+		return email
 
 
 	def clean_password2(self):
 		data = self.cleaned_data
-		emp_password = self.cleaned_data.get("emp_password")
-		password2 = self.cleaned_data.get("password2")
-		if password2 != emp_password:
+		password = self.cleaned_data.get("emp_password")
+		password2 = self.cleaned_data.get("emp_password2")
+		if password2 != password:
 			raise forms.ValidationError("Password doesn't match")
 		return data
 

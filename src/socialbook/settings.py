@@ -59,7 +59,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'socialbook.urls'
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+LOGIN_REDIRECT_URL = 'home'
 
 TEMPLATES = [
     {

@@ -40,6 +40,8 @@ class Company(models.Model):
     company_review         = models.CharField(max_length=150, null=True, blank=True)
     company_password       = models.CharField(max_length=30)
     profile_created        = models.DateTimeField(auto_now=False, auto_now_add=True)
+    is_company             = models.BooleanField(default=False)
+    company_password       = models.CharField(max_length=100)
 
 
     def __str__(self):
@@ -52,6 +54,6 @@ class Company(models.Model):
 
 def post_save_user_receiver(sender, instance, created, *args, **kwargs):
     if created:
-        profile, is_created = Company.objects.get_or_create(company_username=instance)
+    	profile, is_created = Company.objects.get_or_create(company_username=instance)
 
 post_save.connect(post_save_user_receiver, sender=User)

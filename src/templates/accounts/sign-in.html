@@ -9,8 +9,8 @@
 					<div class="col-lg-6">
 						<div class="cmp-info">
 							<div class="cm-logo">
-								<img src='{% static "images/logo.png" %}' alt="">
-								<p>Workwise,  is a global freelancing platform and social networking where businesses and independent professionals connect and collaborate remotely</p>
+								<img src='{% static "images/logo2.png" %}' alt="">
+								<p>SlashWork,  is a global freelancing platform and social networking where businesses and independent professionals connect and collaborate remotely</p>
 							</div><!--cm-logo end-->	
 							<img src='{% static "images/cm-main-img.png" %}' alt="">			
 						</div>
@@ -24,17 +24,23 @@
 							<div class="sign_in_sec current" id="tab-1">
 								
 								<h3>Sign in</h3>
-								<form>
+								<!-- <form action="" method="POST" novalidate="novalidate">{% csrf_token %}
 									<div class="row">
 										<div class="col-lg-12 no-pdd">
+											<div class="text-danger">
+												{{ form.username.errors }}
+											</div>
 											<div class="sn-field">
 												<input type="text" name="username" placeholder="Username">
 												<i class="la la-user"></i>
-											</div><!--sn-field end-->
+											</div>
 										</div>
 										<div class="col-lg-12 no-pdd">
+											<div class="text-danger">
+												{{ form.password.errors }}
+											</div>
 											<div class="sn-field">
-												<input type="password" name="password" placeholder="Password">
+												<input type="password" name="password" placeholder="Password">				
 												<i class="la la-lock"></i>
 											</div>
 										</div>
@@ -46,7 +52,7 @@
 														<span></span>
 													</label>
 													<small>Remember me</small>
-												</div><!--fgt-sec end-->
+												</div>
 												<a href="#" title="">Forgot Password?</a>
 											</div>
 										</div>
@@ -54,7 +60,7 @@
 											<button type="submit" value="submit">Sign in</button>
 										</div>
 									</div>
-								</form>
+								</form> -->
 								<div class="login-resources">
 									<h4>Login Via Social Account</h4>
 									<ul>
@@ -66,45 +72,48 @@
 							<div class="sign_in_sec" id="tab-2">
 								<div class="signup-tab">
 									<i class="fa fa-long-arrow-left"></i>
-									<h2>johndoe@example.com</h2>
+									<h2>Create Account</h2>
 									<ul>
 										<li data-tab="tab-3" class="current"><a href="#" title="">User</a></li>
 										<li data-tab="tab-4"><a href="#" title="">Company</a></li>
 									</ul>
 								</div><!--signup-tab end-->	
 								<div class="dff-tab current" id="tab-3">
-									<form>
+									<form method="POST" novalidate="novalidate">{% csrf_token %}
 										<div class="row">
 											<div class="col-lg-12 no-pdd">
+												<div class="text-danger">
+													{{ form.emp_username.errors }}
+												</div>
 												<div class="sn-field">
-													<input type="text" name="name" placeholder="Full Name">
+													<input type="text" name="emp_username" placeholder="Username">
 													<i class="la la-user"></i>
 												</div>
 											</div>
 											<div class="col-lg-12 no-pdd">
+												<div class="text-danger">
+													{{ form.emp_email.errors }}
+												</div>
 												<div class="sn-field">
-													<input type="text" name="country" placeholder="Country">
+													<input type="text" name="emp_email" placeholder="Email">
 													<i class="la la-globe"></i>
 												</div>
 											</div>
 											<div class="col-lg-12 no-pdd">
-												<div class="sn-field">
-													<select>
-														<option>Category</option>
-													</select>
-													<i class="la la-dropbox"></i>
-													<span><i class="fa fa-ellipsis-h"></i></span>
+												<div class="text-danger">
+													{{ form.emp_password.errors }}
 												</div>
-											</div>
-											<div class="col-lg-12 no-pdd">
 												<div class="sn-field">
-													<input type="password" name="password" placeholder="Password">
+													<input type="password" name="emp_password" placeholder="Password">
 													<i class="la la-lock"></i>
 												</div>
 											</div>
 											<div class="col-lg-12 no-pdd">
+												<div class="text-danger">
+													{{ form.emp_password2.errors }}
+												</div>
 												<div class="sn-field">
-													<input type="password" name="repeat-password" placeholder="Repeat Password">
+													<input type="password" name="emp_password2" placeholder="Repeat Password">
 													<i class="la la-lock"></i>
 												</div>
 											</div>
@@ -116,7 +125,7 @@
 															<span></span>
 														</label>
 														<small>Yes, I understand and agree to the workwise Terms & Conditions.</small>
-													</div><!--fgt-sec end-->
+													</div>
 												</div>
 											</div>
 											<div class="col-lg-12 no-pdd">
