@@ -1,13 +1,13 @@
 {% extends "base.html" %}
-{% load crispy_forms_tags %}
 {% load staticfiles %}
 {% block content %}
+
 <div class="wrapper">
 	<header>
 		<div class="container">
 			<div class="header-data">
 				<div class="logo">
-					<a href="index.html" title=""><img src='{% static "images/logo2.png" %}' alt=""></a>
+					<a href="index.html" title=""><img src="images/logo.png" alt=""></a>
 				</div><!--logo end-->
 				<div class="search-bar">
 					<form>
@@ -208,90 +208,130 @@
 			</div><!--header-data end-->
 		</div>
 	</header><!--header end-->
+	<main>
+		<div class="main-section">
+			<div class="container">
+				<div class="main-section-data">
+					<div class="row">
+						<div class="col-lg-2">
+						</div>
+						<div class="col-lg-8">
+							<div class="main-ws-sec">
+								<div class="posts-section">
+									<div class="post-bar">
+										<div class="post_topbar">
+											<div class="usy-dt">
+												<img src="http://via.placeholder.com/50x50" alt="">
+												<div class="usy-name">
+													<h3>{{instance.company_username}}</h3>
+													<span><img src="images/clock.png" alt="">{{instance.publish_on|timesince}} ago</span>
+												</div>
+											</div>
+											<div class="ed-opts">
+												<a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
+												<ul class="ed-options">
+													<li><a href="#" title="">Edit Post</a></li>
+													<li><a href="#" title="">Unsaved</a></li>
+													<li><a href="#" title="">Unbid</a></li>
+													<li><a href="#" title="">Close</a></li>
+													<li><a href="#" title="">Hide</a></li>
+												</ul>
+											</div>
+										</div>
+										<div class="epi-sec">
+											<ul class="descp">
+												<li><img src="images/icon9.png" alt=""><span>{% if instance.job_location %}{{instance.job_location}}{% endif %}</span></li>
+											</ul>
+											<ul class="bk-links">
+												<li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
+												<li><a href="#" title=""><i class="la la-envelope"></i></a></li>
+											</ul>
+										</div>
+										<div class="job_descp">
+											<h3>{{instance.position}}</h3>
+											<ul class="job-dt">
+												<li><a href="#" title="">{{instance.employment_status}}</a></li>
+												<li><span>{{instance.salaray}}</span></li>
+											</ul>
+											{% if instance.vacancy %}
+											<h3>Vacancy</h3>
+											<p>{{instance.vacancy}}</p>
+											{% endif %}
+											{% if instance.vacancy %}{%else%}
+											<h3>Vacancy</h3>
+											<p>Not Specific</p>
+											{% endif %}
 
-	<div class="container job_post">
-		<div class="post-project">
-			<h3 class="mx-auto">Post a job here....</h3>
-			<div class="post-project-fields">   
-				<form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}{{form|crispy}}
-<!-- 					<div class="container">
 
-						<div class="row">
-							<div class="col-sm-6 col-sm-offset-3 mx-auto">
-								<input type="text" name="position" placeholder="Position">{{ form.position.errors }}
-							</div>
-						</div>
-						
-						<div class="row">
-							<div class="col-sm-6 col-sm-offset-3 mx-auto">
-								<textarea type="text" name="job_context" placeholder="Job Context"></textarea>{{ form.job_context.errors }}
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6 col-sm-offset-3 mx-auto">
-								<textarea type="text" name="job_responsibility" placeholder="Job Responsibility"></textarea>{{ form.job_responsibility.errors }}
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6 col-sm-offset-3 mx-auto">
-								<input type="text" name="educational_req" placeholder="Educational Requirement">{{ form.educational_req.errors }}
-							</div>
-						</div>
-						<div class="row">						
-							<div class="col-sm-6 col-sm-offset-3 mx-auto">
-								<input type="text" name="experience_req" placeholder="Experience Requirement">{{ form.experience_req.errors }}	
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6 col-sm-offset-3 mx-auto">
-								<input type="text" name="compensation" placeholder="Compensation">{{ form.compensation.errors }}
-							</div>
-						</div>
-						<div class="row">							
-							<div class="col-sm-6 col-sm-offset-3 mx-auto">
-								<div class="price-br">
-									<input type="number" name="salaray" placeholder="Salary">
-									<i class="la la-dollar"></i>{{ form.salaray.errors }}
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6 col-sm-offset-3 mx-auto">
-								<div class="inp-field">
-									<select>
-										<option value="fulltime">Full Time</option>
-										<option value="parttime">Part Time</option>
-										<option value="remote">Remote</option>
-									</select>{{ form.employment_status.errors }}
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6 col-sm-offset-3 mx-auto">
-								<textarea name="application_procedure" placeholder="Application Procedure"></textarea>{{ form.application_procedure.errors }}
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6 col-sm-offset-3 mx-auto">
-								<input type="text" name="job_location" placeholder="Job Location">{{ form.job_location.errors }}
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6 col-sm-offset-3 mx-auto">
-								<input type="date" name="application_deadline" placeholder="Application Deadline">{{ form.application_deadline.errors }}
-							</div>
-						</div> -->
-							<div class="col-lg-12">
-								<ul>
-									<li><button class="active" type="submit" value="post">Post</button></li>
-									<li><a href="#" title="">Cancel</a></li>
-								</ul>
-							</div>
+											{% if instance.job_context %}
+											<h3>Job Context</h3>
+											<p>{{instance.job_context}}</p>
+											{% endif %}
+
+											{% if instance.educational_req %}
+											<h3>Educational Requirements</h3>
+											<p>{{instance.educational_req}}</p>
+											{% endif %}
+
+											{% if instance.experience_req %}
+											<h3>Experience Requirements</h3>
+											<p>{{instance.experience_req}}</p>
+											{% endif %}
+
+											{% if instance.additional_req %}
+											<h3>Additional Requirements</h3>
+											<p>{{instance.additional_req}}</p>
+											{% endif %}
+
+											{% if instance.compensation %}
+											<h3>Compensetional</h3>
+											<p>{{instance.compensation}}</p>
+											{% endif %}
+
+											{% if instance.application_deadline %}
+											<h3>Application Deadline</h3>
+											<p>{{instance.application_deadline}}</p>
+											{% endif %}
+
+											{% if instance.application_procedure %}
+											<h3>Application Procedure</h3>
+											<p>{{instance.application_procedure}}</p>
+											{% endif %}
+										</div>
+										<div class="job-status-bar">
+											<ul class="like-com">
+												<li>
+													<a href="#"><i class="la la-heart"></i> Like</a>
+													<img src="images/liked-img.png" alt="">
+													<span>25</span>
+												</li> 
+												<li><a href="#" title="" class="com"><img src="images/com.png" alt=""> Comment 15</a></li>
+											</ul>
+											<a><i class="la la-eye"></i>Views 50</a>
+										</div>
+									</div><!--post-bar end-->
+								</div><!--posts-section end-->
+							</div><!--main-ws-sec end-->
 						</div>
 					</div>
-				</form>
-			</div><!--post-project-fields end-->
-		</div><!--post-project end-->
-	</div><!--post-project-popup end-->
+				</div>
+			</div>
+		</div>
+	</main>
 </div>
+<div class="footy-sec">
+	<div class="container">
+		<ul>
+			<li><a href="#" title="">Help Center</a></li>
+			<li><a href="#" title="">Privacy Policy</a></li>
+			<li><a href="#" title="">Community Guidelines</a></li>
+			<li><a href="#" title="">Cookies Policy</a></li>
+			<li><a href="#" title="">Career</a></li>
+			<li><a href="#" title="">Forum</a></li>
+			<li><a href="#" title="">Language</a></li>
+			<li><a href="#" title="">Copyright Policy</a></li>
+		</ul>
+		<p><img src='{% static "images/copy-icon.png" %}' alt="">Copyright 2018</p>
+	</div>
+</div><!--footy-sec end-->
 {% endblock content %}

@@ -5,7 +5,14 @@ from .models import Job
 
 
 class JobPostForm(forms.ModelForm):
-    application_deadline = forms.DateField(widget=forms.SelectDateWidget)
+    application_deadline  = forms.DateField(widget=forms.SelectDateWidget)
+    job_context           = forms.CharField(widget=PagedownWidget())
+    job_responsibility    = forms.CharField(widget=PagedownWidget())
+    educational_req       = forms.CharField(widget=PagedownWidget())
+    experience_req        = forms.CharField(widget=PagedownWidget())
+    additional_req        = forms.CharField(widget=PagedownWidget())
+    compensation          = forms.CharField(widget=PagedownWidget())
+    application_procedure = forms.CharField(widget=PagedownWidget())
     class Meta:
         model = Job
         fields = [
