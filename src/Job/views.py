@@ -20,9 +20,11 @@ from django.contrib.contenttypes.models import ContentType
 
 def job_post(request):		
 	form = JobPostForm(request.POST or None)
+	user = get_object_or_404(User,username__iexact=request.user)
 	if form.is_valid():
 		instance = form.save(commit=False)
 		instance.user = request.user
+		print(instance.user)
 		instance.save()
 		return HttpResponseRedirect(instance.get_absolute_url())
 	context = {

@@ -41,7 +41,7 @@ EMPLOYMENT_STATUS_CHOICES = (
 
 
 class Job(models.Model):
-    company_username      = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True)
+    user                  = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True)
     position              = models.CharField(max_length=120)
     vacancy               = models.IntegerField(null=True, blank=True)
     job_context 	      = models.CharField(max_length=1500, null=True, blank=True)

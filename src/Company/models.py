@@ -25,7 +25,7 @@ class Address(models.Model):
 
 
 class Company(models.Model):
-    company_username       = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
+    user                   = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     company_name           = models.CharField(max_length=120)
     company_title          = models.CharField(max_length=120, null=True, blank=True)
     company_profile_image  = models.ImageField(upload_to=upload_location, null=True, blank=True)
@@ -45,15 +45,15 @@ class Company(models.Model):
 
 
     def __str__(self):
-        return str(self.company_username)
+        return str(self.user)
 
 
     class Meta:
         ordering = ["-profile_created"]
 
 
-def post_save_user_receiver(sender, instance, created, *args, **kwargs):
-    if created:
-    	profile, is_created = Company.objects.get_or_create(company_username=instance)
+# def post_save_user_receiver(sender, instance, created, *args, **kwargs):
+#     if created:
+#     	profile, is_created = Company.objects.get_or_create(company_username=instance)
 
-post_save.connect(post_save_user_receiver, sender=User)
+# post_save.connect(post_save_user_receiver, sender=User)

@@ -48,6 +48,8 @@ def emp_register_page(request):
 		emp_password = request.POST.get("emp_password")
 		new_user = User.objects.create_user(emp_username, emp_email, emp_password)
 		print(new_user)
+		instance = Employee.objects.create(user=new_user)
+
 		
 	context = {
 		"form":form

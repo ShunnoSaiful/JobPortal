@@ -42,7 +42,7 @@ class SocialLink(models.Model):
         return self.github
 
 class Employee(models.Model):
-    emp_username       = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user               = models.ForeignKey(User, on_delete=models.CASCADE)
     emp_first_name     = models.CharField(max_length=120)
     emp_last_name      = models.CharField(max_length=120)
     emp_position_title = models.CharField(max_length=120, null=True, blank=True)
@@ -52,8 +52,8 @@ class Employee(models.Model):
     emp_country        = models.CharField(max_length=20)
     emp_address        = models.ForeignKey(Address, on_delete=models.CASCADE, null=True, blank=True)
     emp_skills         = models.TextField()
-    # following             = models.ManyToManyField(User, related_name='followers')
-    # followers             = models.ManyToManyField(User, related_name='following')
+    # following        = models.ManyToManyField(User, related_name='followers')
+    # followers        = models.ManyToManyField(User, related_name='following')
     emp_resume         = models.FileField(upload_to=upload_location, null=True, blank=True)
     emp_portfulio      = models.ForeignKey(Portfulio, on_delete=models.CASCADE, null=True, blank=True)
     emp_social_link    = models.ForeignKey(SocialLink, on_delete=models.CASCADE, null=True, blank=True)
@@ -65,7 +65,7 @@ class Employee(models.Model):
 
 
     def __str__(self):
-        return str(self.emp_username)
+        return str(self.user)
 
 
     class Meta:
@@ -86,11 +86,11 @@ class FollowRequest(models.Model):
 
 from django import forms
 
-def post_save_user_receiver(sender, instance, created, *args, **kwargs):
-    if created:
-        profile, is_created = Employee.objects.get_or_create(emp_username=instance, emp_email=instance.email)
+# def post_save_user_receiver(sender, instance, created, *args, **kwargs):
+#     if created:
+#         profile, is_created = Employee.objects.get_or_create(emp_username=instance, emp_email=instance.email)
 
-post_save.connect(post_save_user_receiver, sender=User) 
+# post_save.connect(post_save_user_receiver, sender=User) 
 
 
 
