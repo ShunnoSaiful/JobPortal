@@ -667,11 +667,10 @@ nav > ul > li > a:hover {
 }
 .user-info img {
 	margin-right: 10px;
-	-webkit-border-radius: 100px;
-	-moz-border-radius: 100px;
-	-ms-border-radius: 100px;
-	-o-border-radius: 100px;
-	border-radius: 100px;
+	max-width: 54%;
+	height: 54%;
+	border-radius: 50%;
+	cursor: pointer;
 }
 .user-info a {
 	color: #fff;
@@ -745,12 +744,9 @@ main {
 .usr-pic > img {
 	float: none;
 	border: 5px solid #fff;
-	-webkit-border-radius: 100px;
-	-moz-border-radius: 100px;
-	-ms-border-radius: 100px;
-	-o-border-radius: 100px;
-	border-radius: 100px;
-	width: 100%;
+	border-radius: 50%;
+	width: 85%;
+	height: 88%;
 }
 .user-profile {
 	float: left;

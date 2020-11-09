@@ -6,10 +6,10 @@ from django.db.models.signals import post_save
 
 
 def upload_location(instance, filename):
-    #filebase, extension = filename.split(".")
-    #return "%s/%s.%s" %(instance.id, instance.id, extension)
+    filebase, extension = filename.split(".")
+    return "%s/%s.%s" %(instance.user, instance.user, extension)
     EmployeeModel = instance.__class__
-    # new_id = PostModel.objects.order_by("instance.id").last().id + 1
+    new_id = EmployeeModel.objects.order_by("instance.user").last().id + 1
 
     return "%s" %(filename)
 
@@ -59,9 +59,7 @@ class Employee(models.Model):
     emp_social_link    = models.ForeignKey(SocialLink, on_delete=models.CASCADE, null=True, blank=True)
     emp_ratting        = models.DecimalField(max_digits=2, decimal_places=2, null=True, blank=True)
     emp_review         = models.CharField(max_length=150, null=True, blank=True)
-    profile_created    = models.DateTimeField(auto_now=False, auto_now_add=True)
-    is_employee        = models.BooleanField(default=False, null=True)
-    emp_password       = models.CharField(max_length=100)
+    profile_created    = models.DateTimeField(auto_now=True, auto_now_add=False)
 
 
     def __str__(self):

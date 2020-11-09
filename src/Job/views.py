@@ -1,30 +1,28 @@
 try:
-    from urllib import quote_plus #python 2
-except:
-    pass
-
-try:
-    from urllib.parse import quote_plus #python 3
+    from urllib.parse import quote_plus
 except: 
     pass
 
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,  get_object_or_404, redirect
 from django.http import HttpResponseRedirect, Http404
 from .forms import JobPostForm
 from .models import Job
 from django.db.models import Q
+from django.contrib.auth.models import User
+from Company.models import Company
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.contenttypes.models import ContentType
 
 
-
+@login_required 
 def job_post(request):		
 	form = JobPostForm(request.POST or None)
 	user = get_object_or_404(User,username__iexact=request.user)
+	print(user)
 	if form.is_valid():
 		instance = form.save(commit=False)
 		instance.user = request.user
-		print(instance.user)
 		instance.save()
 		return HttpResponseRedirect(instance.get_absolute_url())
 	context = {

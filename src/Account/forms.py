@@ -35,7 +35,7 @@ class EmployeeLoginForm(forms.Form):
 
 
 
-class EmployeeRegisterForm(forms.ModelForm):
+class EmployeeRegisterForm(forms.Form):
 	emp_username = forms.CharField(max_length=100, widget=forms.TextInput(
 		attrs={
 		'class':'form-control',
@@ -46,23 +46,17 @@ class EmployeeRegisterForm(forms.ModelForm):
 		'class':'form-control',
 		'placeholder':'Repeat Password'
 		}))
-	class Meta:
-		model = Employee
-		fields = [
-			"emp_email",
-			"emp_password"
-		]
 	
-	# emp_email = forms.EmailField(max_length=100, widget=forms.EmailInput(
-	# 	attrs={
-	# 	'class':'form-control',
-	# 	'placeholder':'Email'
-	# 	}))
-	# emp_password = forms.CharField(max_length=100, widget=forms.PasswordInput(
-	# 	attrs={
-	# 	'class':'form-control',
-	# 	'placeholder':'Password'
-	# 	}))
+	emp_email = forms.EmailField(max_length=100, widget=forms.EmailInput(
+		attrs={
+		'class':'form-control',
+		'placeholder':'Email'
+		}))
+	emp_password = forms.CharField(max_length=100, widget=forms.PasswordInput(
+		attrs={
+		'class':'form-control',
+		'placeholder':'Password'
+		}))
 
 	def clean_username(self):
 		username = self.cleaned_data.get("emp_username")
