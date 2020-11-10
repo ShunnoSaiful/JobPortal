@@ -236,7 +236,7 @@
 											<span>155</span>
 										</li>
 										<li>
-											<a href="{% url 'Employee:view_profile' id=instance.id %}" title="">View Profile</a>
+											<a href="{% url 'Employee:view_profile' slug=instance.slug %}" title="">View Profile</a>
 										</li>
 									</ul>
 								</div><!--user-data end-->
@@ -246,54 +246,16 @@
 										<i class="la la-ellipsis-v"></i>
 									</div><!--sd-title end-->
 									<div class="suggestions-list">
+										{% for emp in employee %}
 										<div class="suggestion-usd">
-											<img src="http://via.placeholder.com/35x35" alt="">
+											<img src="{{emp.emp_profile_image.url}}" alt="">
 											<div class="sgt-text">
-												<h4>Jessica William</h4>
-												<span>Graphic Designer</span>
+												<h4>{{emp.emp_first_name}} {{emp.emp_last_name}}</h4>
+												<span>{{emp.emp_position_title}}</span>
 											</div>
 											<span><i class="la la-plus"></i></span>
 										</div>
-										<div class="suggestion-usd">
-											<img src="http://via.placeholder.com/35x35" alt="">
-											<div class="sgt-text">
-												<h4>John Doe</h4>
-												<span>PHP Developer</span>
-											</div>
-											<span><i class="la la-plus"></i></span>
-										</div>
-										<div class="suggestion-usd">
-											<img src="http://via.placeholder.com/35x35" alt="">
-											<div class="sgt-text">
-												<h4>Poonam</h4>
-												<span>Wordpress Developer</span>
-											</div>
-											<span><i class="la la-plus"></i></span>
-										</div>
-										<div class="suggestion-usd">
-											<img src="http://via.placeholder.com/35x35" alt="">
-											<div class="sgt-text">
-												<h4>Bill Gates</h4>
-												<span>C & C++ Developer</span>
-											</div>
-											<span><i class="la la-plus"></i></span>
-										</div>
-										<div class="suggestion-usd">
-											<img src="http://via.placeholder.com/35x35" alt="">
-											<div class="sgt-text">
-												<h4>Jessica William</h4>
-												<span>Graphic Designer</span>
-											</div>
-											<span><i class="la la-plus"></i></span>
-										</div>
-										<div class="suggestion-usd">
-											<img src="http://via.placeholder.com/35x35" alt="">
-											<div class="sgt-text">
-												<h4>John Doe</h4>
-												<span>PHP Developer</span>
-											</div>
-											<span><i class="la la-plus"></i></span>
-										</div>
+										{% endfor %}										
 										<div class="view-more">
 											<a href="#" title="">View More</a>
 										</div>
@@ -451,76 +413,23 @@
 										</div>
 									<div class="top-profiles">
 										<div class="pf-hd">
-											<h3>Top Profiles</h3>
+											<h3>Top Company</h3>
 											<i class="la la-ellipsis-v"></i>
 										</div>
 										<div class="profiles-slider">
+											{% for company in company %}
 											<div class="user-profy">
 												<img src="http://via.placeholder.com/57x57" alt="">
-												<h3>John Doe</h3>
-												<span>Graphic Designer</span>
+												<h3>{{company.company_name}}</h3>
+												<span>{{company.company_title}}</span>
 												<ul>
 													<li><a href="#" title="" class="followw">Follow</a></li>
 													<li><a href="#" title="" class="envlp"><img src="images/envelop.png" alt=""></a></li>
 													<li><a href="#" title="" class="hire">hire</a></li>
 												</ul>
-												<a href="#" title="">View Profile</a>
+												<a href="{% url 'Company:view_profile' slug=company.slug %}" title="">View Profile</a>
 											</div><!--user-profy end-->
-											<div class="user-profy">
-												<img src="http://via.placeholder.com/57x57" alt="">
-												<h3>John Doe</h3>
-												<span>Graphic Designer</span>
-												<ul>
-													<li><a href="#" title="" class="followw">Follow</a></li>
-													<li><a href="#" title="" class="envlp"><img src="images/envelop.png" alt=""></a></li>
-													<li><a href="#" title="" class="hire">hire</a></li>
-												</ul>
-												<a href="#" title="">View Profile</a>
-											</div><!--user-profy end-->
-											<div class="user-profy">
-												<img src="http://via.placeholder.com/57x57" alt="">
-												<h3>John Doe</h3>
-												<span>Graphic Designer</span>
-												<ul>
-													<li><a href="#" title="" class="followw">Follow</a></li>
-													<li><a href="#" title="" class="envlp"><img src="images/envelop.png" alt=""></a></li>
-													<li><a href="#" title="" class="hire">hire</a></li>
-												</ul>
-												<a href="#" title="">View Profile</a>
-											</div><!--user-profy end-->
-											<div class="user-profy">
-												<img src="http://via.placeholder.com/57x57" alt="">
-												<h3>John Doe</h3>
-												<span>Graphic Designer</span>
-												<ul>
-													<li><a href="#" title="" class="followw">Follow</a></li>
-													<li><a href="#" title="" class="envlp"><img src="images/envelop.png" alt=""></a></li>
-													<li><a href="#" title="" class="hire">hire</a></li>
-												</ul>
-												<a href="#" title="">View Profile</a>
-											</div><!--user-profy end-->
-											<div class="user-profy">
-												<img src="http://via.placeholder.com/57x57" alt="">
-												<h3>John Doe</h3>
-												<span>Graphic Designer</span>
-												<ul>
-													<li><a href="#" title="" class="followw">Follow</a></li>
-													<li><a href="#" title="" class="envlp"><img src="images/envelop.png" alt=""></a></li>
-													<li><a href="#" title="" class="hire">hire</a></li>
-												</ul>
-												<a href="#" title="">View Profile</a>
-											</div><!--user-profy end-->
-											<div class="user-profy">
-												<img src="http://via.placeholder.com/57x57" alt="">
-												<h3>John Doe</h3>
-												<span>Graphic Designer</span>
-												<ul>
-													<li><a href="#" title="" class="followw">Follow</a></li>
-													<li><a href="#" title="" class="envlp"><img src="images/envelop.png" alt=""></a></li>
-													<li><a href="#" title="" class="hire">hire</a></li>
-												</ul>
-												<a href="#" title="">View Profile</a>
-											</div><!--user-profy end-->
+											{% endfor %}
 										</div><!--profiles-slider end-->
 									</div><!--top-profiles end-->
 <!--post-bar end-->
@@ -552,15 +461,15 @@
 									</div>
 									<div class="jobs-list">
 										{% for obj in object %}
-										<div class="job-info">
+										<a href="{% url 'Job:job_details' slug=obj.slug %}" class="job-info">
 											<div class="job-details">
 												<h3>{{obj.position}}</h3>
-												<p>{{obj.job_context}}</p>
+												<p>{{obj.job_context|truncatechars:30}}</p>
 											</div>
 											<div class="hr-rate">
 												<span>${{obj.salaray}}</span>
 											</div>
-										</div>
+										</a href="{% url 'Job:job_details' slug=obj.slug %}">
 										{% endfor %}
 									</div><!--jobs-list end-->
 								</div><!--widget-jobs end-->
@@ -570,16 +479,17 @@
 										<i class="la la-ellipsis-v"></i>
 									</div>
 									<div class="jobs-list">
-										<div class="job-info">
+										{% for obj in object %}
+										<a href="{% url 'Job:job_details' slug=obj.slug %}" class="job-info">
 											<div class="job-details">
-												<h3>Senior Product Designer</h3>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+												<h3>{{obj.position}}</h3>
+												<p>{{obj.job_context|truncatechars:30}}</p>
 											</div>
 											<div class="hr-rate">
-												<span>$25/hr</span>
+												<span>${{obj.salaray}}</span>
 											</div>
-										</div><!--job-info end-->
-
+										</a><!--job-info end-->
+										{% endfor %}
 									</div><!--jobs-list end-->
 								</div><!--widget-jobs end-->
 								<div class="widget suggestions full-width">

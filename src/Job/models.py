@@ -103,7 +103,6 @@ def create_slug(instance, new_slug=None):
 
 def pre_save_job_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
-        # instance.slug = create_slug(instance)
         instance.slug = unique_slug_generator(instance)
 
 

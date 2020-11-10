@@ -843,6 +843,7 @@ main {
 	-ms-border-radius: 100px;
 	-o-border-radius: 100px;
 	border-radius: 100px;
+	width: 17%;
 }
 .sgt-text {
 	float: left;
@@ -1371,10 +1372,11 @@ main {
 	float: left;
 	width: 100%;
 	padding: 20px;
+	background-color: #fff;
 }
 .user-profy {
 	float: left;
-	width: 100%;
+	width: 100%
 	background-color: #fff;
 	text-align: center;
 	border-left: 1px solid #ececec;
@@ -2518,10 +2520,11 @@ footer {
 }
 
 /* ================== USER PROFILE =================== */
-
+.cover-sec{
+	height: 800%px;
+}
 .cover-sec img {
 	width: 100%;
-	height: 40%!important;
 }
 .cover-sec > a {
 	display: inline-block;

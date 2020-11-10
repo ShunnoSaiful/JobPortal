@@ -1,7 +1,11 @@
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_save
+from django.utils.text import slugify
+from .utils import unique_slug_generator
+
+
 # MVC MODEL VIEW CONTROLLER
 
 
@@ -42,7 +46,8 @@ class SocialLink(models.Model):
         return self.github
 
 class Employee(models.Model):
-    user               = models.ForeignKey(User, on_delete=models.CASCADE)
+    user               = models.OneToOneField(User, on_delete=models.CASCADE)
+    slug               = models.SlugField(unique=True, null=True, blank=True)
     emp_first_name     = models.CharField(max_length=120)
     emp_last_name      = models.CharField(max_length=120)
     emp_position_title = models.CharField(max_length=120, null=True, blank=True)
@@ -85,15 +90,26 @@ class FollowRequest(models.Model):
     def __str__(self):
         return self.user.username
 
-from django import forms
 
-# def post_save_user_receiver(sender, instance, created, *args, **kwargs):
-#     if created:
-#         profile, is_created = Employee.objects.get_or_create(emp_username=instance, emp_email=instance.email)
+def create_slug(instance, new_slug=None):
+    slug = slugify(instance.user)
+    if new_slug is not None:
+        slug = new_slug
+    qs = Employee.objects.filter(slug=slug).order_by("-id")
+    exists = qs.exists()
+    if exists:
+        new_slug = "%s-%s" %(slug, qs.first().id)
+        return create_slug(instance, new_slug=new_slug)
+    return slug
 
-# post_save.connect(post_save_user_receiver, sender=User) 
+
+def pre_save_job_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = unique_slug_generator(instance)
 
 
+
+pre_save.connect(pre_save_job_receiver, sender=Employee)
 
 
 
