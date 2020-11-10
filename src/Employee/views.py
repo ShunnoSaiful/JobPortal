@@ -7,7 +7,6 @@ from Job.models import Job
 # Create your views here.
 def home(request, id=None):
 	queryset_list = Job.objects.all()
-	print(queryset_list)
 	instance = get_object_or_404(Employee, id=1)
 	print(instance.emp_profile_image.url)
 	context = {
