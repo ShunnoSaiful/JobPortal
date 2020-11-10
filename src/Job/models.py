@@ -37,6 +37,9 @@ EMPLOYMENT_STATUS_CHOICES = (
         ('r', 'Remote')
     )
 
+class Category(models.Model):
+    name = models.CharField(max_length=120)
+
 
 
 
@@ -58,6 +61,8 @@ class Job(models.Model):
     publish_on     	 	  = models.DateTimeField(auto_now=True, auto_now_add=False)
     draft                 = models.BooleanField(default=False)
     slug                  = models.SlugField(unique=True, null=True, blank=True)
+    category              = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
+    count                 = models.IntegerField()
 
 
     objects = JobPostManager()

@@ -67,6 +67,9 @@ def job_list(request):
 
 def job_details(request, slug=None):
 	instance = get_object_or_404(Job, slug=slug)
+	instance.count=instance.count+1
+	print(instance.count)
+	instance.save()
 	if instance.salaray == None:
 		instance.salaray = "negotiable"
 	if instance.employment_status =="f":
@@ -77,11 +80,8 @@ def job_details(request, slug=None):
 		instance.employment_status = "Remote"
 
 		
-	share_string = quote_plus(instance.position)
-	content_type = ContentType.objects.get_for_model(Job)
 	obj_id = instance.id
 	context = {
 		"instance": instance,
-		"share_string": share_string,
 	}
 	return render(request, "job/job_details.html", context)

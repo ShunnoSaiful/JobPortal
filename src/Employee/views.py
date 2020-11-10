@@ -6,9 +6,8 @@ from Job.models import Job
 
 # Create your views here.
 def home(request, id=None):
-	queryset_list = Job.objects.all()
+	queryset_list = Job.objects.all().order_by('-count')
 	instance = get_object_or_404(Employee, id=1)
-	print(instance.emp_profile_image.url)
 	context = {
 		"instance": instance,
 		"object": queryset_list,
@@ -21,4 +20,4 @@ def view_profile(request, id=None):
 	context = {
 		"instance": instance,
 	}
-	return render(request, "employee/profiles.html", context)
+	return render(request, "employee/user-profile.html", context)
