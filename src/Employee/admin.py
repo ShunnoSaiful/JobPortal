@@ -6,19 +6,18 @@ admin.site.register(FollowRequest)
 # Register your models here.
 
 admin.site.register(Employee)
-admin.site.register(Portfulio)
 
 admin.site.register(Address)
 admin.site.register(SocialLink)
 
 
-# class ProductImageInline(admin.TabularInline):
-#     model = ProductImage
+# class PortfulioFileInline(admin.TabularInline):
+#     model = Portfulio
 #     extra = 3
 
 
 
-# class ProductAdmin(admin.ModelAdmin):
-#     inlines = [ ProductImageInline]
+# class PortfulioAdmin(admin.ModelAdmin):
+#     inlines = [ PortfulioFileInline]
     
-# admin.site.register(Product, ProductAdmin)
+admin.site.register(Portfulio)

@@ -1,26 +1,6 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>WorkWise Html Template</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<link rel="stylesheet" type="text/css" href="css/animate.css">
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/line-awesome.css">
-<link rel="stylesheet" type="text/css" href="css/line-awesome-font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="lib/slick/slick.css">
-<link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" type="text/css" href="css/responsive.css">
-</head>
-
-
-<body>
-	
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
 
 	<div class="wrapper">
 		
@@ -234,7 +214,7 @@
 
 
 		<section class="cover-sec">
-			<img src="http://via.placeholder.com/1600x400" alt="">
+			<img src="{{instance.emp_profile_image.url}}" alt="">
 		</section>
 
 
@@ -247,7 +227,7 @@
 								<div class="main-left-sidebar">
 									<div class="user_profile">
 										<div class="user-pro-img">
-											<img src="http://via.placeholder.com/170x170" alt="">
+											<img class="img-fluid" src="{{instance.emp_profile_image.url}}" alt="">
 										</div><!--user-pro-img end-->
 										<div class="user_pro_status">
 											<ul class="flw-hr">
@@ -293,8 +273,8 @@
 											<div class="suggestion-usd">
 												<img src="http://via.placeholder.com/35x35" alt="">
 												<div class="sgt-text">
-													<h4>John Doe</h4>
-													<span>PHP Developer</span>
+													<h4>{{instance.emp_first_name}} {{instance.emp_last_name}}</h4>
+													<span>{{instance.emp_last_name}}</span>
 												</div>
 												<span><i class="la la-plus"></i></span>
 											</div>
@@ -340,9 +320,9 @@
 							<div class="col-lg-6">
 								<div class="main-ws-sec">
 									<div class="user-tab-sec">
-										<h3>John Doe</h3>
+										<h3>{{instance.emp_first_name }} {{instance.emp_last_name}}</h3>
 										<div class="star-descp">
-											<span>Graphic Designer at Self Employed</span>
+											<span>{{instance.emp_position_title}}</span>
 											<ul>
 												<li><i class="fa fa-star"></i></li>
 												<li><i class="fa fa-star"></i></li>
@@ -802,12 +782,4 @@
 
 	</div><!--theme-layout end-->
 
-
-
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/popper.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="lib/slick/slick.min.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
-</body>
-</html>
+{% endblock content %}
