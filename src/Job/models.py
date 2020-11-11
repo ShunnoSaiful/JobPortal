@@ -47,12 +47,12 @@ class Job(models.Model):
     company               = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True)
     position              = models.CharField(max_length=120)
     vacancy               = models.IntegerField(null=True, blank=True)
-    job_context 	      = models.TextField(null=True, blank=True)
-    job_responsibility    = models.TextField(null=True, blank=True)
+    job_context 	      = models.TextField(null=True, blank=True)#richtextfield
+    job_responsibility    = models.TextField(null=True, blank=True)#richtextfield
     employment_status     = models.CharField(max_length=1, choices=EMPLOYMENT_STATUS_CHOICES, null=True, blank=True)
-    educational_req       = models.TextField(null=True, blank=True)
-    experience_req        = models.TextField(null=True, blank=True)
-    additional_req        = models.TextField(null=True, blank=True)
+    educational_req       = models.TextField(null=True, blank=True)#richtextfield
+    experience_req        = models.TextField(null=True, blank=True)#richtextfield
+    additional_req        = models.TextField(null=True, blank=True)#richtextfield
     job_location          = models.CharField(max_length=150, null=True, blank=True)
     salaray               = models.IntegerField(null=True, blank=True)
     compensation          = models.TextField(null=True, blank=True)

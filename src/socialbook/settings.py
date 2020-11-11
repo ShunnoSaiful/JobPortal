@@ -37,13 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pagedown.apps.PagedownConfig',
 
     'Employee',
     'Company',
     'Job',
     'Account',
     #third party
+    'pagedown',
     'markdown_deux',
     'crispy_forms',
 ]

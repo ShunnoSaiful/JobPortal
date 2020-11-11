@@ -67,6 +67,7 @@ def job_list(request):
 
 def job_details(request, slug=None):
 	instance = get_object_or_404(Job, slug=slug)
+	print(instance.company)
 	instance.count=instance.count+1
 	print(instance.count)
 	instance.save()

@@ -4,14 +4,14 @@ from .models import Job
 
 
 class JobPostForm(forms.ModelForm):
-    application_deadline  = forms.DateField(widget=forms.SelectDateWidget)
-    job_context           = forms.CharField(widget=PagedownWidget())
-    job_responsibility    = forms.CharField(widget=PagedownWidget())
-    educational_req       = forms.CharField(widget=PagedownWidget())
-    experience_req        = forms.CharField(widget=PagedownWidget())
-    additional_req        = forms.CharField(widget=PagedownWidget())
-    compensation          = forms.CharField(widget=PagedownWidget())
-    application_procedure = forms.CharField(widget=PagedownWidget())
+    application_deadline  = forms.DateField(widget=forms.SelectDateWidget, input_formats=['%d/%m/%Y'], required=False)
+    job_context           = forms.CharField(widget=PagedownWidget(), required=False)
+    job_responsibility    = forms.CharField(widget=PagedownWidget(), required=False)
+    educational_req       = forms.CharField(widget=PagedownWidget(), required=False)
+    experience_req        = forms.CharField(widget=PagedownWidget(), required=False)
+    additional_req        = forms.CharField(widget=PagedownWidget(), required=False)
+    compensation          = forms.CharField(widget=PagedownWidget(), required=False)
+    application_procedure = forms.CharField(widget=PagedownWidget(), required=False)
     class Meta:
         model = Job
         fields = [
