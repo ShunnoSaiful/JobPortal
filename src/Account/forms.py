@@ -1,8 +1,7 @@
 from django import forms
 from django.contrib.auth import authenticate
-from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from Employee.models import Employee
-User = get_user_model()
 
 
 class EmployeeLoginForm(forms.Form):

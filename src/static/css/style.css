@@ -90,6 +90,9 @@ q:before, q:after {
 	content: '';
 	content: none;
 }
+.wmd-preview{
+    display: none!important;
+}
 button {
 	outline: none;
 }

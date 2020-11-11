@@ -1,6 +1,5 @@
 from django import forms
-from pagedown.widgets import PagedownWidget
-
+from pagedown.widgets import PagedownWidget, AdminPagedownWidget
 from .models import Job
 
 

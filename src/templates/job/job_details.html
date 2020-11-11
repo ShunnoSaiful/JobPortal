@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load markdown_deux_tags %}
 {% block content %}
 
 <div class="wrapper">
@@ -265,7 +266,7 @@
 
 											{% if instance.job_context %}
 											<h3>Job Context</h3>
-											<p>{{instance.job_context}}</p>
+											<p>{{instance.job_context|markdown}}</p>
 											{% endif %}
 
 											{% if instance.educational_req %}
